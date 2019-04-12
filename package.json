@@ -1,0 +1,25 @@
+{
+  "name": "clean-my-slack",
+  "version": "0.1.0",
+  "description": "Clean your Slack from your CLI",
+  "main": "src/app.js",
+  "author": "@alexjoffroy",
+  "license": "MIT",
+  "scripts": {
+    "start": "./bin/run",
+    "test": "nyc mocha 'tests/**/*.test.js'"
+  },
+  "dependencies": {
+    "@slack/client": "^5.0.0",
+    "chalk": "^2.4.2",
+    "commander": "^2.20.0",
+    "configstore": "^4.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
+    "sinon": "^7.3.1",
+    "sinon-chai": "^3.3.0"
+  }
+}

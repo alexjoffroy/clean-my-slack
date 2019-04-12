@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+const App = require('../src/app.js')
+const { Clean, WorkspaceAdd } = require('../src/commands')
+
+new App()
+    .registerCommander(require('commander'))
+    .registerCommand(Clean)
+    .registerCommand(WorkspaceAdd)
+    .run(process.argv);
