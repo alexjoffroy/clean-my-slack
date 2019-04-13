@@ -18,7 +18,7 @@ describe(relative(__filename), () => {
     let commander;
     
     function runApp(app, command = '', args = []) { 
-        app.run(['node','./bin/run', command].concat(args))
+        app.run(['node','./bin/run'].concat(command ? [command] : []).concat(args))
     }
 
     beforeEach(() => {
@@ -29,6 +29,7 @@ describe(relative(__filename), () => {
         sinon.spy(Command.prototype, 'option')
         sinon.spy(Command.prototype, 'parse')
         sinon.spy(Command.prototype, 'version')
+        sinon.stub(Command.prototype, 'help')
         sinon.spy(TestCommand.prototype, 'run')
 
         app = new App().registerCommander(commander);
@@ -37,6 +38,16 @@ describe(relative(__filename), () => {
     it('sets the correct version', () => {
         runApp(app)
         expect(commander.version).to.have.been.calledOnceWith(require('../package.json').version)
+    })
+
+    it('displays help when called without command', () => {
+        runApp(app)
+        expect(commander.help).to.have.been.calledOnce
+    })
+
+    it('does not display help when called with command', () => {
+        runApp(app, 'token:add')
+        expect(commander.help).to.not.have.been.calledOnce
     })
 
     it('registers a command', () => {
@@ -70,6 +81,7 @@ describe(relative(__filename), () => {
         Command.prototype.option.restore()
         Command.prototype.parse.restore()
         Command.prototype.version.restore()
+        Command.prototype.help.restore()
         TestCommand.prototype.run.restore()
         app = commander = null;
     })

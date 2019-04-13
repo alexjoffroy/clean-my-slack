@@ -50,6 +50,10 @@ class App {
 
         this.commander.parse(argv);
 
+        if (!argv.slice(2).length) {
+            this.commander.help();
+        }
+
         return this
     }
 }
