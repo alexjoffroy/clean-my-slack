@@ -5,6 +5,9 @@
   "main": "src/app.js",
   "author": "@alexjoffroy",
   "license": "MIT",
+  "bin": {
+    "cmsk": "./bin/run"
+  },
   "scripts": {
     "start": "./bin/run",
     "test": "nyc mocha 'tests/**/*.test.js'"
