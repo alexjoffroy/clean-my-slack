@@ -27,7 +27,7 @@ class WorkspaceAdd {
     }
 }
 
-WorkspaceAdd.command = 'token:add';
+WorkspaceAdd.command = 'workspace:add';
 
 WorkspaceAdd.description = "register a new token";
 
