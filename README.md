@@ -26,7 +26,7 @@ npm i -g clean-my-slack
 
 Add your workspace to your CLI by running:
 ```
-cmsk workspace:add -n <workspace> -t <token>
+cmsk workspace:add -n <name of the workspace> -t <token>
 ```
 
 > The name provided with -n option could be different of the real Slack workspace name.
@@ -36,7 +36,7 @@ cmsk workspace:add -n <workspace> -t <token>
 
 When one of your Slack channel becomes dirty, just run the following:
 ```
-cmsk clean -n <workspace> -c <channel>
+cmsk clean -w <workspace> -c <channel>
 ```
 
 This will delete all messages from the channel, starting from the last.
