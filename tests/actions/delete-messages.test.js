@@ -25,7 +25,6 @@ describe(relative(__filename), async () => {
         
         let action = new DeleteMessages({slack})
         
-        action.throttle = 0;
         await action.run(channel, Array.from(messages), progress)
 
         expect(slack.client.chat.delete).to.have.been.calledWith({channel: channel.id, ts: messages[0].ts})

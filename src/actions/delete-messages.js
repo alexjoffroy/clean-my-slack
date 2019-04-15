@@ -1,8 +1,6 @@
 module.exports = class DeleteMessages {
     constructor(options) {
         this.slack = options.slack
-        // Delay to avoid Slack throttle 
-        this.throttle = 1000
     }
 
     async run(channel, messages, progress) {
@@ -13,12 +11,7 @@ module.exports = class DeleteMessages {
           
           progress(message)
 
-          return new Promise(resolve => {
-            setTimeout(async () => {
-              await this.run(channel, messages, progress);
-              resolve();
-            }, this.throttle);
-          });
+          await this.run(channel, messages, progress);
         }
     }
 }

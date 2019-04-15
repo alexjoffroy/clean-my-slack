@@ -6,6 +6,7 @@ const Printer = require('./printer')
 const Slack = require('./slack')
 const Actions = require('./actions')
 const Queries = require('./queries')
+const {LogLevel} = require('@slack/logger')
 
 class App {
 
@@ -14,7 +15,7 @@ class App {
         this.commands = []
         this.config = new Config;
         this.printer = new Printer(chalk);
-        this.slack = new Slack(new WebClient())
+        this.slack = new Slack(new WebClient(null, {logLevel: LogLevel.ERROR}))
         this.actions = new Actions(this.slack)
         this.queries = new Queries(this.slack)
     }
