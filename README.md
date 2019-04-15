@@ -5,7 +5,7 @@ CLI tool to easily batch delete messages from your Slack channels.
 ## Installation
 
 ```
-yarn add -g clean-my-slack
+yarn global add clean-my-slack
 ```
 
 or:
